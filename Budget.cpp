@@ -1,14 +1,19 @@
 #include"Budget.h"
 #include<iostream>
+#include<iomanip>
 using namespace std;
 
-void Budget::addIncome(float a){incomes.push_back(Income(a));}
-void Budget::addExpense(string c,float a){expenses.push_back(Expense(c,a));}
-
-void Budget::displaySummary(){
-    float totalIncome=0,totalExpense=0;
-    for(auto &i:incomes) totalIncome+=i.amount;
-    for(auto &e:expenses) totalExpense+=e.amount;
-    cout<<"Income:"<<totalIncome<<" Expense:"<<totalExpense
-        <<" Balance:"<<totalIncome-totalExpense<<"\n";
+void Budget::addIncome(string s,float a){
+    incomes.push_back(Income(s,a));
 }
+
+void Budget::updateIncome(string s,float a){
+    for(auto &i:incomes) if(i.getSource()==s){i.setAmount(a);return;}
+    cout<<"Income source not found\n";
+}
+
+void Budget::removeIncome(string s){
+    for(int i=0;i<incomes.size();i++){
+        if(incomes[i].getSource()==s){incomes.erase(incomes.begin()+i);return;}
+    }
+    cout<<"Income
