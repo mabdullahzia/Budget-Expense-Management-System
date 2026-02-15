@@ -1,4 +1,4 @@
-# Budget-Expense-Management-System
+
 # Budget & Expense Management System
 
 A console-based C++ system to track income, expenses, and savings with detailed analytics.
